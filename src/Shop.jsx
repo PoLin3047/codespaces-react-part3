@@ -37,6 +37,10 @@ export default function Shop() {
         });
     }
 
+    function clearCart() {
+        setCart([]);
+    }
+
     const productList = products.map(item => <Item key={item.id} {...item} callback={addCart} />);
     const cartList = cart.map(item => (
         <li key={item.id}>
@@ -49,6 +53,9 @@ export default function Shop() {
             <div className='grid-container'>{productList}</div>
             <h1>Cart</h1>
             <ol>{cartList}</ol>
+            <button onClick={clearCart} disabled={cart.length === 0}>
+                Clear Cart
+            </button>
         </>
     );
 }
